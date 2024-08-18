@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        header {
+            width: 100%;
+            height: 100px;
+            background-color: #003b94;
+        }
+
+        #head a {
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            margin: 100px;
+        }
+
+        #enter {
+            text-align: center;
+        }
+
+        #f1 {
+            margin-left: 615px;
+        }
+
+        span {
+            color: brown;
+        }
+
+        #b1 {
+            background-color: #006CE4;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col" id="head">
+                    <a href="">Booking.com</a>
+                </div>
+            </div>
+        </div>
+    </header><br><br>
+
+    <div class="row" id="enter">
+        <div class="col">
+            <h2>Sign in or create an account</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="" id="f1">
+
+                    Email address
+                    <br>
+                    <input type="text" placeholder="Enter your Email address" id="t1"><br>
+                    <span id="email"></span><br>
+
+                    <h3>Create a Password</h3>
+                    <p>Use a minimum of 10 characters, including uppercase letters, lowercase letters and numbers.</p>
+
+                    Enter Password
+                    <br>
+                    <input type="password" placeholder="Enter a password" id="t2"><br>
+                    <span id="pass"></span><br>
+
+                    Enter Confirm-Password
+                    <br>
+                    <input type="password" placeholder="Confirm your password" id="t3"><br>
+                    <span id="cpass"></span><br>
+
+                    <input type="button" value="Create account" id="b1" onclick="validationOf()">
+
+                    <span id="s1"></span>
+
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function validationOf(value) {
+                let email = document.getElementById('t1').value;
+                let pass = document.getElementById('t2').value;
+                let cpwd = document.getElementById('t3').value;
+
+                document.getElementById('email').innerHTML = "";
+                document.getElementById('pass').innerHTML = "";
+                document.getElementById('cpass').innerHTML = "";
+
+                if (email == 0) {
+                    document.getElementById('email').innerHTML = "Email should not be empty.";
+                }
+                if (email.length < 6) {
+                    document.getElementById('email').innerHTML = "Email must contain minimum 6 characters.";
+                }
+                if (email.length > 30) {
+                    document.getElementById('email').innerHTML = "Email length must not exceed 30 characters.";
+                }
+                if (pass == 0) {
+                    document.getElementById('pass').innerHTML = "Password should not be empty." + "<br>";
+                }
+                if (pass.length < 8) {
+                    document.getElementById('pass').innerHTML = "Password must contain minimum 8 characters." + "<br>";
+                }
+                if (pass.length > 15) {
+                    document.getElementById('pass').innerHTML = "Password length must not exceed 15 characters." + "<br>";
+                }
+                if (pass.search(/[a-z]/) < 0) {
+                    document.getElementById('pass').innerHTML = "Password must contain a lowercase letter" + "<br>";
+                }
+                if (pass.search(/[A-Z]/) < 0) {
+                    document.getElementById('pass').innerHTML = "Password must contain a Uppercase letter" + "<br>";
+                }
+                if (pass.search(/[0-9]/) < 0) {
+                    document.getElementById('pass').innerHTML = "Password must contain a number" + "<br>";
+                }
+                if (cpass == 0) {
+                    document.getElementById('cpass').innerHTML = "Confirm Password should not be empty" + "<br>";
+                }
+                if (pass != cpass) {
+                    document.getElementById('cpass').innerHTML = "Password Mismatch..!" + "<br>";
+                }
+                if (uname == pass) {
+                    document.getElementById('cpass').innerHTML = "Username should not be a Password..! " + "<br>";
+                }
+            }
+        </script>
+    </div>
+
+</body>
+
+</html>
